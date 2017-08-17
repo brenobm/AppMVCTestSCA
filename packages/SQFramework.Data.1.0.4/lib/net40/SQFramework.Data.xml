@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SQFramework.Data</name>
+    </assembly>
+    <members>
+        <member name="T:SQFramework.Data.IRepositoryBase`1">
+            <summary>
+            Interface padrão para os Repositórios
+            </summary>
+            <typeparam name="T">Tipo da Entidade</typeparam>
+        </member>
+        <member name="T:SQFramework.Data.Office.Access.AccessHelper">
+            <summary>
+            Classe responsável por encapsular facilitadores para acesso a arquivo do Microsoft Access
+            </summary>
+        </member>
+        <member name="M:SQFramework.Data.Office.Access.AccessHelper.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="filePath">Caminho do arquivo MDB</param>
+        </member>
+        <member name="M:SQFramework.Data.Office.Access.AccessHelper.Connect">
+            <summary>
+            Conecta no arquivo MDB e mantém a conexão aberta
+            </summary>
+        </member>
+        <member name="M:SQFramework.Data.Office.Access.AccessHelper.ExecutePagging``1(System.String,System.Int32)">
+            <summary>
+            Executa paginação de uma query
+            </summary>
+            <typeparam name="T">Tipo para o qual o resultado será transformado</typeparam>
+            <param name="commandText">Query a ser executada</param>
+            <param name="size">Tamanho da página</param>
+            <returns>Instância da Classe DataPagging a qual possibilita o acesso aos itens da página transformados</returns>
+        </member>
+        <member name="M:SQFramework.Data.Office.Access.AccessHelper.ExecutePagging``1(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Executa paginação de uma query
+            </summary>
+            <typeparam name="T">Tipo para o qual o resultado será transformado</typeparam>
+            <param name="commandText">Query a ser executada</param>
+            <param name="size">Tamanho da página</param>
+            <param name="closeConnection">Determina se a conexão aberta será fechada após a execução da query</param>
+            <returns>Instância da Classe DataPagging a qual possibilita o acesso aos itens da página transformados</returns>
+        </member>
+        <member name="M:SQFramework.Data.Office.Access.AccessHelper.ExecutePagging``1(System.String,System.Int32,SQFramework.Core.Reflection.ITransformHelper{``0})">
+            <summary>
+            Executa paginação de uma query, utilizando um transformador customizado
+            </summary>
+            <typeparam name="T">Tipo para o qual o resultado será transformado</typeparam>
+            <param name="commandText">Query a ser executada</param>
+            <param name="size">Tamanho da página</param>
+            <param name="transformHelper">Instância do transformador customizado que implementa a interface SQFramework.Core.Reflection.ITransformHelper</param>
+            <returns>Instância da Classe DataPagging a qual possibilita o acesso aos itens da página transformados</returns>
+        </member>
+        <member name="M:SQFramework.Data.Office.Access.AccessHelper.ExecutePagging``1(System.String,System.Int32,SQFramework.Core.Reflection.ITransformHelper{``0},System.Boolean)">
+            <summary>
+            Executa paginação de uma query, utilizando um transformador customizado
+            </summary>
+            <typeparam name="T">Tipo para o qual o resultado será transformado</typeparam>
+            <param name="commandText">Query a ser executada</param>
+            <param name="size">Tamanho da página</param>
+            <param name="transformHelper">Instância do transformador customizado que implementa a interface SQFramework.Core.Reflection.ITransformHelper</param>
+            <param name="closeConnection">Determina se a conexão aberta será fechada após a execução da query</param>
+            <returns>Instância da Classe DataPagging a qual possibilita o acesso aos itens da página transformados</returns>
+        </member>
+        <member name="M:SQFramework.Data.Office.Access.AccessHelper.ExecuteDataTable(System.String)">
+            <summary>
+            Executa a query e retorna um DataTable com o resultado, a conexão será fechada ao final
+            </summary>
+            <param name="commandText">Query a ser executada</param>
+            <returns></returns>
+        </member>
+        <member name="M:SQFramework.Data.Office.Access.AccessHelper.ExecuteReader(System.String)">
+            <summary>
+            Executa a query e retorna um DataReader com o resultado, a conexão manterá aberta ao final
+            </summary>
+            <param name="commandText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SQFramework.Data.Office.Access.AccessHelper.Disconnect">
+            <summary>
+            Fecha a conexão com o arquivo
+            </summary>
+        </member>
+        <member name="M:SQFramework.Data.Office.Access.AccessHelper.Disconnect(System.Data.IDataReader)">
+            <summary>
+            Fecha o DataReader e a conexão atrelada a ele
+            </summary>
+            <param name="reader">Instância do DataReader</param>
+        </member>
+        <member name="T:SQFramework.Data.Pagging.DataPagging`1">
+            <summary>
+            Classe responsável por executar paginação sobre o objeto DataReader, e retornar os registros transformados
+            </summary>
+            <typeparam name="T">Tipo de destino para o qual o registro será transformado</typeparam>
+        </member>
+        <member name="M:SQFramework.Data.Pagging.DataPagging`1.NextList">
+            <summary>
+            Cria um DataTable a partir do DataReader corrente
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SQFramework.Data.Pagging.DataPagging`1.Next">
+            <summary>
+            Avança uma página
+            </summary>
+            <returns>Lista com a itens transformados da próxima página </returns>
+        </member>
+        <member name="T:SQFramework.Data.DataTableTransformer">
+            <summary>
+            Classe responsável por transformar os registros de um DataTable em um tipo determinado
+            </summary>
+        </member>
+        <member name="M:SQFramework.Data.DataTableTransformer.Transform``1(System.Data.DataTable)">
+            <summary>
+            Transforma os registros de um DataTable em instâncias de um determinado tipo
+            </summary>
+            <typeparam name="T">Tipo para o qual será transformado</typeparam>
+            <param name="dataTable">Instância do DataTable</param>
+            <returns>Lista com os registros transformados</returns>
+        </member>
+        <member name="M:SQFramework.Data.DataTableTransformer.Transform(System.Data.DataTable,System.Type)">
+            <summary>
+            Transforma os registros de um DataTable em instâncias de um determinado tipo
+            </summary>
+            <param name="dataTable">Instância do DataTable</param>
+            <param name="destinyType">Tipo de destino</param>
+            <returns>Lista com os registros transformados</returns>
+        </member>
+        <member name="T:SQFramework.Data.Office.Excel.ExcelHelper">
+            <summary>
+            Classe responsável por encapsular facilitadores para acesso a arquivo do Microsoft Excel
+            </summary>
+        </member>
+        <member name="M:SQFramework.Data.Office.Excel.ExcelHelper.Read(System.String,System.String)">
+            <summary>
+            Executa leitura de uma planilha do arquivo Excel
+            </summary>
+            <param name="filename">Caminho do arquivo no formato Excel</param>
+            <param name="planname">Nome da planilha</param>
+            <returns>Instância do DataSet com o resultado</returns>
+        </member>
+        <member name="M:SQFramework.Data.Office.Excel.ExcelHelper.Read(System.String,System.Int32)">
+            <summary>
+            Executa leitura de uma planilha do arquivo Excel
+            </summary>
+            <param name="filename">Caminho do arquivo no formato Excel</param>
+            <param name="positionSheet">Nome da planilha</param>
+            <returns>Instância do DataSet com o resultado</returns>
+        </member>
+        <member name="M:SQFramework.Data.Office.Excel.ExcelHelper.GetExcelMimeTypes">
+            <summary>
+            Retorna os mime-types possíveis de um arquivo excel
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SQFramework.Data.Office.Excel.ExcelHelper.ToDataTable``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Transformar uma Lista em um DataTable
+            </summary>
+            <typeparam name="T">Classe do tipo da Lista</typeparam>
+            <param name="items">Lista de itens</param>
+            <returns></returns>
+        </member>
+        <member name="T:SQFramework.Data.Pagging.PageMessage`1">
+            <summary>
+            Classe responsável por transportar os itens de uma página
+            </summary>
+            <typeparam name="EntityType">Tipo do Data Transfer Object a ser transportado</typeparam>
+        </member>
+        <member name="T:SQFramework.Data.Pagging.PageMessage">
+            <summary>
+            Representa as informações de uma página
+            </summary>
+        </member>
+        <member name="M:SQFramework.Data.Pagging.PageMessage`1.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            
+            </summary>
+            <param name="startIndex">Registro inicial</param>
+            <param name="pageSize">Tamanho da página</param>
+            <param name="rowsCount">Quantidade total de registros</param>
+            <param name="actualPage">Página atual</param>
+            <param name="entities">Entidades da página atual</param>
+        </member>
+        <member name="P:SQFramework.Data.Pagging.PageMessage`1.Entities">
+            <summary>
+            Entidades da página atual
+            </summary>
+        </member>
+        <member name="T:SQFramework.Data.DataReaderExtensions">
+            <summary>
+            Classe utilizada como extensão do tipo System.Data.IDataReader
+            </summary>
+        </member>
+        <member name="M:SQFramework.Data.DataReaderExtensions.Transform``1(System.Data.IDataReader)">
+            <summary>
+            Transforma o registro atual de um DataReader em uma instância de um tipo determinado
+            </summary>
+            <typeparam name="T">Tipo para o qual será transformado</typeparam>
+            <param name="reader">Instância do DataReader</param>
+            <returns>Instância do tipo determinado com o registro do DataReader transformado</returns>
+        </member>
+    </members>
+</doc>

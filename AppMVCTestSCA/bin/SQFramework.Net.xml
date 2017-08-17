@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SQFramework.Net</name>
+    </assembly>
+    <members>
+        <member name="T:SQFramework.Net.Services.Behaviors.ServiceVersionHelpPageBehavior">
+            <summary>
+            Classe reponsável por criar um Service Behavior que substitui a página original do WCF, substituindo por uma página que mostra a versão atual de um Assembly
+            </summary>
+        </member>
+        <member name="T:SQFramework.Net.Services.Behaviors.ServiceVersionHelpPageBehaviorExtension">
+            <summary>
+            Representa o elemento de configuração do HelpPageBehavior a ser configurado no arquivo de configurações das aplicações
+            </summary>
+        </member>
+        <member name="P:SQFramework.Net.Services.Behaviors.ServiceVersionHelpPageBehaviorExtension.AssemblyName">
+            <summary>
+            Nome do Assembly que contém as informações de versão
+            </summary>
+        </member>
+        <member name="P:SQFramework.Net.Services.Behaviors.ServiceVersionHelpPageBehaviorExtension.TemplateResource">
+            <summary>
+            Caminho do Recurso a ser utilizado como template
+            </summary>
+        </member>
+        <member name="T:SQFramework.Net.Services.BodyWriters.ServiceVersionHelpPageWriter">
+            <summary>
+            Classe responsável por escrever o conteúdo da página que substitui a página original do WCF
+            </summary>
+        </member>
+        <member name="T:SQFramework.Net.Services.KnownTypeProvider">
+            <summary>
+            Classe responsável por retornar todos os possíveis KnownTypes definidos dentro da lista de Assemblies 
+            definidos no parâmetro KnownTypeAssemblies no arquivo de configurações
+            </summary>
+        </member>
+        <member name="M:SQFramework.Net.Services.KnownTypeProvider.GetKnownTypes(System.Reflection.ICustomAttributeProvider)">
+            <summary>
+            Retorna lista de tipos com todos os KnownTypes dentro da lista de Assemblies definidos 
+            no parâmetro KnownTypeAssemblies dentro da tag appSettings no arquivo de configurações da seguinte forma:
+            key="KnownTypeAssemblies" value="Assembly1,Assembly2" 
+            </summary>
+            <param name="provider"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SQFramework.Net.Services.Service">
+            <summary>
+            Representa um serviço WCF
+            </summary>
+        </member>
+        <member name="P:SQFramework.Net.Services.Service.CommunicationObject">
+            <summary>
+            Proxy para o serviço WCF
+            </summary>
+        </member>
+        <member name="P:SQFramework.Net.Services.Service.Scope">
+            <summary>
+            Escopo da operação WCF no qual serão passadas as informações implicitas
+            </summary>
+        </member>
+        <member name="T:SQFramework.Net.Services.ServiceConfig">
+            <summary>
+            Representa as configurações de um serviço no arquivo de configurações
+            </summary>
+        </member>
+        <member name="T:SQFramework.Net.Services.ServiceConfigHelper">
+            <summary>
+            Classe responsável por encapsular o acesso as configuraçoes do serviço no arquivo de configurações
+            </summary>
+        </member>
+        <member name="M:SQFramework.Net.Services.ServiceConfigHelper.GetConfig(System.String)">
+            <summary>
+            Retorna configuração do serviço
+            </summary>
+            <param name="configSection">Seção de configuração</param>
+            <returns>Instância contendo as informações da configuração</returns>
+        </member>
+        <member name="T:SQFramework.Net.Services.UserNameAuthenticationConfig">
+            <summary>
+            Representa a configuração de usuário e senha para acesso a um serviço WCF
+            </summary>
+        </member>
+        <member name="M:SQFramework.Net.Services.UserNameAuthenticationConfig.GetConfig(System.String)">
+            <summary>
+            Retorna configuração de usuário e senha a partir de uma seção no arquivo de configuração
+            </summary>
+            <param name="configSection">Seção de configuração</param>
+            <returns>Instância com as informações configuradas</returns>
+        </member>
+    </members>
+</doc>

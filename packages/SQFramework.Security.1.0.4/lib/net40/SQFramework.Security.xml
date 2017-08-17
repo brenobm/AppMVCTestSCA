@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SQFramework.Security</name>
+    </assembly>
+    <members>
+        <member name="T:SQFramework.Security.Cryptography.DESCryptoHelper">
+            <summary>
+            Classe responsável por encapsular funcionalidade de criptografia reversível do tipo DES
+            </summary>
+        </member>
+        <member name="M:SQFramework.Security.Cryptography.DESCryptoHelper.Encrypt(System.String,System.String)">
+            <summary>
+            Criptografa uma String utilizando uma chave
+            </summary>
+            <param name="key">Chave a ser utilizada na criptografia</param>
+            <param name="value">Valor a ser criptografado</param>
+            <returns>Valor criptografado</returns>
+        </member>
+        <member name="M:SQFramework.Security.Cryptography.DESCryptoHelper.Desencrypt(System.String,System.String)">
+            <summary>
+            Descriptografa uma String utilizando uma chave
+            </summary>
+            <param name="key">Chave a ser utilizada na descriptografia</param>
+            <param name="value">Valor a ser descriptografado</param>
+            <returns>Valor descriptografado</returns>
+        </member>
+        <member name="T:SQFramework.Security.Cryptography.SHA512CryptoHelper">
+            <summary>
+            Classe responsável por encapsular funcionalidade de criptografia não reversível SHA512
+            </summary>
+        </member>
+        <member name="M:SQFramework.Security.Cryptography.SHA512CryptoHelper.Hash(System.String)">
+            <summary>
+            Cria um hash para a string informada
+            </summary>
+            <param name="value">Valor a ser criptografado</param>
+            <returns>Valor criptografado</returns>
+        </member>
+        <member name="T:SQFramework.Security.Impersonation">
+            <summary>
+            Classe responsável por encapsular as funcionalidades de modificação das credenciais de execução da aplicação, permitindo o acesso a recursos
+            </summary>
+        </member>
+        <member name="M:SQFramework.Security.Impersonation.GetLogonUserToken(System.String,System.String,System.String)">
+            <summary>
+            Retorna o manipulador de um usuário na rede
+            </summary>
+            <param name="domain">Domínio da rede ou máquina</param>
+            <param name="userName">Usuário</param>
+            <param name="password">Senha</param>
+            <returns>Instância do manipulador</returns>
+        </member>
+        <member name="M:SQFramework.Security.Impersonation.Impersonate(System.String,System.String,System.String)">
+            <summary>
+            Modifica das credenciais de execução da aplicação, permitindo o acesso a recursos
+            </summary>
+            <param name="domain">Domínio da rede ou máquina</param>
+            <param name="userName">Usuário</param>
+            <param name="password">Senha</param>
+            <returns></returns>
+        </member>
+        <member name="M:SQFramework.Security.Impersonation.Undo">
+            <summary>
+            Desfaz as modificações das credenciais de execução da aplicação
+            </summary>
+        </member>
+        <member name="T:SQFramework.Security.UserInfo">
+            <summary>
+            Representa informações de um usuário
+            </summary>
+        </member>
+    </members>
+</doc>
